@@ -1,0 +1,6 @@
+@SA.Irrigation.API_HostAddress = http://localhost:5042
+
+GET {{SA.Irrigation.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
