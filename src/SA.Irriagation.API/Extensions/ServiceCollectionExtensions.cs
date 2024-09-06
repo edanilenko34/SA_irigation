@@ -39,6 +39,7 @@ namespace SA.Irrigation.API.Extensions
             ArgumentNullException.ThrowIfNull(configuration);
 
             services.AddScoped<IDeviceModelService, DeviceModelService>();
+            services.AddScoped<IDeviceService, DeviceService>();
 
             return services;
         }
