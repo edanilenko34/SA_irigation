@@ -40,6 +40,7 @@ namespace SA.Irrigation.API.Extensions
 
             services.AddScoped<IDeviceModelService, DeviceModelService>();
             services.AddScoped<IDeviceService, DeviceService>();
+            services.AddScoped<IScheduleService, ScheduleService>();
 
             return services;
         }
