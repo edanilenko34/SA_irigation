@@ -56,7 +56,7 @@ namespace SA.Irrigation.API.Controllers
             return await _deviceService.CreateDeviceAsync(request, cancellationToken);
         }
 
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType(typeof(DeviceDto), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]

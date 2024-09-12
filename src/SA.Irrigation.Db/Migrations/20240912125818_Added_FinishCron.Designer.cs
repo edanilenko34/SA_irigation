@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SA.Irrigation.Db;
 
@@ -11,9 +12,11 @@ using SA.Irrigation.Db;
 namespace SA.Irrigation.Db.Migrations
 {
     [DbContext(typeof(IrrigationDbContext))]
-    partial class IrrigationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240912125818_Added_FinishCron")]
+    partial class Added_FinishCron
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

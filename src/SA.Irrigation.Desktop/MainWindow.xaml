@@ -5,13 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SA.Irrigation.Desktop"
         mc:Ignorable="d"
-        Title="Irrigation System" Height="450" Width="800">
+        Title="Irrigation System" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <Menu>
-            <MenuItem Header="_File">
-                <MenuItem Header="E_xit" Click="ExitMenu_Click" />
-            </MenuItem>
-        </Menu>
-
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Menu Grid.Row="0" Grid.Column="0">
+                <MenuItem Header="_File">
+                    <MenuItem Header="E_xit" Click="ExitMenu_Click" />
+                </MenuItem>
+            </Menu>
+            <TabControl Grid.Row="1" Grid.Column="0">
+                <TabItem x:Name="tabDevices" Header="Devices and schedules">
+                    <Grid Width="Auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="27"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="27"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,2" Grid.Row="0" Grid.Column="0">
+                            <Button x:Name="btnAddDevice" Content="Add device" Margin="5,0,0,0" Click="btnAddDevice_Click"></Button>
+                            <Button x:Name="btnDeleteDevice" Content="Delete device" Margin="5,0,0,0" Click="btnDeleteDevice_Click" />
+                            <Button x:Name="btnUpdateDevice" Content="Update device" Margin="5,0,0,0" Click="btnUpdateDevice_Click" />
+                        </StackPanel>
+                        <DataGrid x:Name="dgDevices" Height="173"  Grid.Column="0" Grid.Row="1" SelectionChanged="dgDevices_SelectionChanged"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,2" Grid.Row="2" Grid.Column="0">
+                            <Button x:Name="btnAddSchedule" Content="Add schedule" Margin="5,0,0,0" Click="btnAddSchedule_Click"></Button>
+                            <Button x:Name="btnDeleteSchedule" Content="Delete schedule" Margin="5,0,0,0" Click="btnDeleteSchedule_Click" />
+                            <Button x:Name="btnUpdateSchedule" Content="Update schedule" Margin="5,0,0,0" Click="btnUpdateSchedule_Click" />
+                        </StackPanel>
+                        <DataGrid x:Name="dgSchedules" Grid.Row="3" Grid.Column="0"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabModels" Header="Device models">
+                    <Grid Width="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="27"/>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Button x:Name="btnAddDeviceModel" Content="Add model" Margin="5,0,0,0" Click="btnAddDeviceModel_Click"></Button>
+                            <Button x:Name="btnDeleteDeviceModel" Content="Delete model" Margin="5,0,0,0" Click="btnDeleteDeviceModel_Click" />
+                            <Button x:Name="btnUpdateDeviceModel" Content="Update model" Margin="5,0,0,0" Click="btnUpdateDeviceModel_Click" />
+                        </StackPanel>
+                        <DataGrid x:Name="dgModels" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="NaN" VerticalAlignment="Stretch" Width="NaN" AutoGenerateColumns="True"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
     </Grid>
 </Window>

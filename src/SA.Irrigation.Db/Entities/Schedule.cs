@@ -14,8 +14,8 @@ namespace SA.Irrigation.Db.Entities
         public string Name { get; set; }
         public string? Description { get; set; }
         public string StartCron { get; set; }
+        public string? FinishCron { get; set; }
         public FinishByType FinishBy { get; set; }
-        public TimeSpan? FinishDelta { get; set; }
         public Device ParentDevice { get; set; }
         public Sensor? FinishDevice { get; set; }
         public double? FinishValue { get; set; }

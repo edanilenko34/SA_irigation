@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Refit;
+using SA.Irrigation.Desktop.RestApiClient;
 using System.Windows;
 
 namespace SA.Irrigation.Desktop
@@ -10,14 +12,14 @@ namespace SA.Irrigation.Desktop
     /// </summary>
     public partial class App : Application
     {
-        public static IConfiguration Config { get; private set; }
+        public static IConfiguration config { get; private set; }
 
         public static IHost? AppHost { get; private set; }
 
         public App()
         {
 
-            Config = new ConfigurationBuilder()
+            config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
 
@@ -25,6 +27,11 @@ namespace SA.Irrigation.Desktop
                 .ConfigureServices((hostingContext, services) =>
                 {
                     services.AddSingleton<MainWindow>();
+                    
+
+                    services.AddRefitClient<ISAIrrigationAPI>()
+                        .ConfigureHttpClient(c=> c.BaseAddress = new Uri(config.GetConnectionString("serviceUrl")));
+
                 }).Build();
         }
 

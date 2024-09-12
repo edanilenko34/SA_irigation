@@ -53,7 +53,7 @@ namespace SA.Irrigation.Services.Implementation
                 toAdd.StartCron = request.StartCron;
                 toAdd.FinishDevice = sensor;
                 toAdd.FinishValue = request.FinishValue;
-                toAdd.FinishDelta = request.FinishDelta;
+                toAdd.FinishCron = request.FinishCron;
                 toAdd.Name = request.Name;
                 _context.Schedules.Add(toAdd);
                 await _context.SaveChangesAsync(cancellationToken);
@@ -65,7 +65,7 @@ namespace SA.Irrigation.Services.Implementation
                     Name = toAdd.Name,
                     Description = toAdd.Description,
                     StartCron = toAdd.StartCron,
-                    FinishDelta = toAdd.FinishDelta,
+                    FinishCron = toAdd.FinishCron,
                     FinishValue = toAdd.FinishValue
                 });
 
@@ -114,7 +114,7 @@ namespace SA.Irrigation.Services.Implementation
                     Name = res.Name,
                     Description = res.Description,
                     FinishBy = res.FinishBy,
-                    FinishDelta = res.FinishDelta,
+                    FinishCron = res.FinishCron,
                     FinishDeviceId = res.FinishDevice == null ? null : res.FinishDevice.Id,
                     FinishValue = res.FinishValue,
                     StartCron = res.StartCron
@@ -142,7 +142,7 @@ namespace SA.Irrigation.Services.Implementation
                         Name=s.Name,
                         Description=s.Description,
                         FinishBy = s.FinishBy,
-                        FinishDelta = s.FinishDelta,
+                        FinishCron = s.FinishCron,
                         FinishValue=s.FinishValue,
                         StartCron = s.StartCron,
                         FinishDeviceId = s.FinishDevice == null ? null : s.FinishDevice.Id
@@ -179,7 +179,7 @@ namespace SA.Irrigation.Services.Implementation
                 toUpdate.FinishDevice = sensor;
                 toUpdate.FinishValue = request.FinishValue;
                 toUpdate.FinishBy = request.FinishBy;
-                toUpdate.FinishDelta = request.FinishDelta;
+                toUpdate.FinishCron = request.FinishCron;
                 toUpdate.Description = request.Description;
                 toUpdate.Name = request.Name;
                 _context.Schedules.Update(toUpdate);
@@ -190,7 +190,7 @@ namespace SA.Irrigation.Services.Implementation
                     Name = toUpdate.Name,
                     Description = toUpdate.Description,
                     FinishBy = toUpdate.FinishBy,
-                    FinishDelta = toUpdate.FinishDelta,
+                    FinishCron = toUpdate.FinishCron,
                     FinishDeviceId = toUpdate.FinishDevice == null ? null : toUpdate.FinishDevice.Id,
                     FinishValue = toUpdate.FinishValue,
                     StartCron = toUpdate.StartCron

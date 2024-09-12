@@ -1,13 +1,13 @@
-﻿using SA.Irrigation.Common.Enums;
+﻿using SA.Irrigation.Desktop.RestApiClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SA.Irrigation.Common.Models.Requests
+namespace SA.Irrigation.Desktop.ViewModels
 {
-    public class CreateOrUpdateScheduleRequest
+    public class ScheduleViewModel
     {
         public string Name { get; set; }
         public string? Description { get; set; }
@@ -15,7 +15,6 @@ namespace SA.Irrigation.Common.Models.Requests
         public string? FinishCron { get; set; }
         public FinishByType FinishBy { get; set; }
         public Guid? FinishDeviceId { get; set; }
-        public  Guid ParentId { get; set; }
         public double? FinishValue { get; set; }
     }
 }
