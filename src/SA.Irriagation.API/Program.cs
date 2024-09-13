@@ -21,6 +21,8 @@ builder.Services.AddDbContext(builder.Configuration);
 
 builder.Services.AddCustomServices(builder.Configuration);
 
+
+
 var app = builder.Build();
 
 app.UseSwagger();
