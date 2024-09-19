@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using SA.Irrigation.Common.Configuration;
 using SA.Irrigation.Common.Helpers;
 using SA.Irrigation.Common.Services;
@@ -13,13 +14,19 @@ namespace SA.Irrigation.Services.Implementation
         private readonly LoraConfiguration _configuration;
         public int Channel { get;}
 
-        public LoraTransportLayer(ILogger<LoraTransportLayer> logger, LoraConfiguration configuration) : base(configuration.PortName, configuration.BaudRate)
+        public LoraTransportLayer(ILogger<LoraTransportLayer> logger, IConfiguration configuration) : base()
         {
             ArgumentNullException.ThrowIfNull(logger, nameof(logger));
             ArgumentNullException.ThrowIfNull(configuration, nameof(configuration));
+
             _logger = logger;
-            _configuration = configuration;
-            Channel = configuration.Channel;
+            _configuration = configuration.Get<LoraConfiguration>();
+            ArgumentNullException.ThrowIfNull(_configuration, nameof(_configuration));
+
+            Channel = _configuration.Channel;
+            PortName = _configuration.PortName;
+            BaudRate = _configuration.BaudRate;
+            
 
             SetDeviceSettings();
         }

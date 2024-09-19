@@ -514,6 +514,15 @@ namespace SA.Irrigation.Desktop.RestApiClient
         [JsonPropertyName("finishValue")]
         public double? FinishValue { get; set; }
 
+        [JsonPropertyName("startDate")]
+        public DateTime? StartDate { get; set; }
+
+        [JsonPropertyName("finishDate")]
+        public DateTime? FinishDate { get; set; }
+
+        [JsonPropertyName("isDisabled")]
+        public bool IsDisabled { get; set; }
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -654,6 +663,15 @@ namespace SA.Irrigation.Desktop.RestApiClient
 
         [JsonPropertyName("finishValue")]
         public double? FinishValue { get; set; }
+
+        [JsonPropertyName("startDate")]
+        public DateTime? StartDate { get; set; }
+
+        [JsonPropertyName("finishDate")]
+        public DateTime? FinishDate { get; set; }
+
+        [JsonPropertyName("isDisabled")]
+        public bool IsDisabled { get; set; }
 
     }
 

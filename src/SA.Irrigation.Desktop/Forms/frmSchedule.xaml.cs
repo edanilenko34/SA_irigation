@@ -76,6 +76,18 @@ namespace SA.Irrigation.Desktop.Forms
                     cbFinishBy.SelectedIndex = 1;
                     cbSensors.SelectedItem = cbSensors.Items.OfType<DeviceDto>().FirstOrDefault(f => f.Id == ScheduleData.FinishDeviceId);
                 }
+                if (ScheduleData.StartDate != null)
+                {
+                    dpStartDate.DisplayDate = ScheduleData.StartDate.Value;
+                    dpStartDate.SelectedDate = ScheduleData.StartDate.Value;
+
+                }
+                if (ScheduleData.FinishDate != null)
+                {
+                    dpEndDate.DisplayDate = ScheduleData.FinishDate.Value;
+                    dpEndDate.SelectedDate = ScheduleData.FinishDate.Value;
+                }
+                cbxDisabled.IsChecked = ScheduleData.IsDisabled;
             }
             else
             {
@@ -119,6 +131,9 @@ namespace SA.Irrigation.Desktop.Forms
                 ScheduleData.FinishValue = Double.Parse(tbValue.Text);
                 ScheduleData.FinishDeviceId = (Guid)cbSensors.SelectedValue;
             }
+            if (dpEndDate.SelectedDate!=null) ScheduleData.FinishDate = dpEndDate.SelectedDate;
+            if (dpStartDate.SelectedDate!=null) ScheduleData.StartDate = dpStartDate.SelectedDate;
+            ScheduleData.IsDisabled = cbxDisabled.IsChecked == null ? false : cbxDisabled.IsChecked.Value;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

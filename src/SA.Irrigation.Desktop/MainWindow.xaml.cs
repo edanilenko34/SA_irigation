@@ -211,7 +211,10 @@ namespace SA.Irrigation.Desktop
                         FinishCron = frm.ScheduleData.FinishCron,
                         FinishBy = frm.ScheduleData.FinishBy,
                         FinishDeviceId = frm.ScheduleData.FinishDeviceId,
-                        FinishValue = frm.ScheduleData.FinishValue
+                        FinishValue = frm.ScheduleData.FinishValue,
+                        FinishDate = frm.ScheduleData.FinishDate,
+                        StartDate = frm.ScheduleData.StartDate,
+                        IsDisabled = frm.ScheduleData.IsDisabled
                     };
                     var res = _client.CreateScheduleAsync(request.ParentId, request).Result;
                     _schedules.Add(res);
@@ -245,7 +248,10 @@ namespace SA.Irrigation.Desktop
                     FinishDeviceId=toEdit.FinishDeviceId,
                     FinishValue=toEdit.FinishValue,
                     FinishBy = toEdit.FinishBy,
-                    FinishCron = toEdit.FinishCron
+                    FinishCron = toEdit.FinishCron,
+                    FinishDate = toEdit.FinishDate,
+                    StartDate = toEdit.StartDate,
+                    IsDisabled = toEdit.IsDisabled
                 };
                 
                 if (frm.ShowDialog() == true)
@@ -259,7 +265,10 @@ namespace SA.Irrigation.Desktop
                         FinishCron = frm.ScheduleData.FinishCron,
                         FinishBy = frm.ScheduleData.FinishBy,
                         FinishDeviceId = frm.ScheduleData.FinishDeviceId,
-                        FinishValue = frm.ScheduleData.FinishValue
+                        FinishValue = frm.ScheduleData.FinishValue,
+                        IsDisabled = frm.ScheduleData.IsDisabled,
+                        FinishDate = frm.ScheduleData.FinishDate,
+                        StartDate = frm.ScheduleData.StartDate
                     };
 
                     var edited = _client.SchedulesPUT(toEdit.Id, request).Result;

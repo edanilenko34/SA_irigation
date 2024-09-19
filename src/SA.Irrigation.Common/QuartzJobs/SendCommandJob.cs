@@ -2,8 +2,9 @@
 using SA.Irrigation.Common.Models.QuartzJobs;
 using SA.Irrigation.Common.Models.QueueItems;
 using SA.Irrigation.Common.Services;
+using System.Text.Json;
 
-namespace SA.Irrigation.API.QuartzJobs
+namespace SA.Irrigation.Common.QuartzJobs
 {
     public class SendCommandJob : IJob
     {
@@ -18,8 +19,12 @@ namespace SA.Irrigation.API.QuartzJobs
 
         public Task Execute(IJobExecutionContext context)
         {
-            var data = (SendJobData)context.JobDetail.JobDataMap["sendData"];
-            _queueProcessor.Enqueue((SendItem)data);
+            var dataStr = context.MergedJobDataMap.GetString("sendData");
+            if (!string.IsNullOrEmpty(dataStr))
+            {
+                var data = JsonSerializer.Deserialize<SendJobData>(dataStr);
+                _queueProcessor.Enqueue(data);
+            }
 
             return Task.CompletedTask;
         }

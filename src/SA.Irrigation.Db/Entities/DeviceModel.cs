@@ -25,5 +25,6 @@ namespace SA.Irrigation.Db.Entities
         public string? CloseCommand { get; set; }
         [StringLength(64)]
         public string? GetDataCommand { get; set; }
+        public List<Device>? Devices { get; set; }
     }
 }

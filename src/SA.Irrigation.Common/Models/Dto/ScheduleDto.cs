@@ -17,5 +17,8 @@ namespace SA.Irrigation.Common.Models.Dto
         public FinishByType FinishBy { get; set; }
         public Guid? FinishDeviceId { get; set; }
         public double? FinishValue { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? FinishDate { get; set; }
+        public bool IsDisabled { get; set; }
     }
 }

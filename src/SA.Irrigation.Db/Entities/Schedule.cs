@@ -16,8 +16,12 @@ namespace SA.Irrigation.Db.Entities
         public string StartCron { get; set; }
         public string? FinishCron { get; set; }
         public FinishByType FinishBy { get; set; }
-        public Device ParentDevice { get; set; }
+        public Device? ParentDevice { get; set; }
+        public Guid ParentDeviceId { get; set; }
         public Sensor? FinishDevice { get; set; }
         public double? FinishValue { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? FinishDate { get; set; }
+        public bool IsDisabled { get; set; } = false;
     }
 }

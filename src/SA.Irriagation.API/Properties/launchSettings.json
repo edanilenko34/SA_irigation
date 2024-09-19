@@ -18,7 +18,11 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DB_CONNECTION_STRING": "Persist Security Info=True;User ID=sa;Password=!Passw0rd@;Initial Catalog=irrigation;Server=localhost;TrustServerCertificate=true;Encrypt=false",
-        "QUEUE_PROCESSING_DELAY": "15";
+        "QUEUE_PROCESSING_DELAY": "15",
+        "LORA_PORT_BAUD_RATE": "9600",
+        "LORA_PORT_NAME": "COM3",
+        "LORA_DEVICE_ADDRESS": "65534",
+        "LORA_DEVICE_CHANNEL": "23"
       }
     },
     "IIS Express": {

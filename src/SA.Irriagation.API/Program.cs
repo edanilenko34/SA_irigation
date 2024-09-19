@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SA.Irrigation.API.Extensions;
+using SA.Irrigation.API.Services;
 using SA.Irrigation.Db;
 using System.Text.Json.Serialization;
 
@@ -17,11 +18,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddConfigiration(builder.Configuration);
+builder.Services.AddCustomServices(builder.Configuration);
 builder.Services.AddDbContext(builder.Configuration);
 
-builder.Services.AddCustomServices(builder.Configuration);
 
-
+builder.Services.AddQuartzCustomJobs(builder.Configuration);
 
 var app = builder.Build();
 
@@ -36,6 +37,9 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<IrrigationDbContext>();
     dbContext.Database.Migrate();
+
+   // var schedulesLoader = scope.ServiceProvider.GetRequiredService<ISchedulesLoader>();
+   // await schedulesLoader.Load();
 }
 
 app.Run();

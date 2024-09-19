@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AppAny.Quartz.EntityFrameworkCore.Migrations;
+using AppAny.Quartz.EntityFrameworkCore.Migrations.SqlServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SA.Irrigation.Common.Configuration;
 using SA.Irrigation.Db.Entities;
@@ -37,7 +39,7 @@ namespace SA.Irrigation.Db
         {
             base.OnModelCreating(modelBuilder);
 
-
+            modelBuilder.AddQuartz(builder => builder.UseSqlServer());
         }
 
     }

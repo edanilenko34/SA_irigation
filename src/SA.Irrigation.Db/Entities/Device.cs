@@ -17,7 +17,8 @@ namespace SA.Irrigation.Db.Entities
         public string Name { get; set; }
         [StringLength(1024)]
         public string? Description { get; set; }
-        public DeviceModel Model { get; set; }
+        public DeviceModel? Model { get; set; }
+        public Guid? ModelId { get; set; }
         public IEnumerable<Schedule>? Schedules { get; set; }
     }
 }

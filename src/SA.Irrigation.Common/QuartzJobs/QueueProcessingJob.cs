@@ -1,8 +1,9 @@
 ﻿using Quartz;
 using SA.Irrigation.Common.Services;
 
-namespace SA.Irrigation.API.QuartzJobs
+namespace SA.Irrigation.Common.QuartzJobs
 {
+    [DisallowConcurrentExecution]
     public class QueueProcessingJob : IJob
     {
         private readonly IQueueProcessor _queueProcessor;

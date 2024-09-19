@@ -44,7 +44,23 @@ namespace SA.Irrigation.Services.Implementation
                 {
                     var item = _sendQueue.Dequeue();
                     _transportLayer.SendData(BuildDataToSend(item, (_transportLayer as LoraTransportLayer).Channel));
+                    _logger.LogInformation("Sent message to device with address = {address} ", item.Address);
                     Thread.Sleep(200);
+                    if ((_transportLayer as LoraTransportLayer).BytesToRead > 0)
+                    {
+                        var rs = new byte[(_transportLayer as LoraTransportLayer).BytesToRead];
+                        (_transportLayer as LoraTransportLayer).Read(rs, 0 , rs.Length);
+                        var strlog = new StringBuilder();
+                        foreach (byte b in rs)
+                        {
+                            strlog.Append("x");
+                            strlog.Append(b.ToString("X2"));
+                            strlog.Append(" ");
+                        }
+                        _logger.LogInformation("Answer is {answer}", strlog.ToString()); 
+
+                    }
+
                 }
                 (_transportLayer as LoraTransportLayer).Close();
             }

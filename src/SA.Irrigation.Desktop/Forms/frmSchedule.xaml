@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SA.Irrigation.Desktop.Forms"
         mc:Ignorable="d"
-        Title="Schedule" Height="294" Width="531" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+        Title="Schedule" Height="408" Width="531" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -28,6 +31,9 @@
         <Label Content="CRON expression of finish" Grid.Row="4" Grid.Column="0"/>
         <Label Content="Sensor for finish" Grid.Row="5" Grid.Column="0"/>
         <Label Content="Sensor value for finish" Grid.Row="6" Grid.Column="0"/>
+        <Label Content="Start date" Grid.Row="7" Grid.Column="0"/>
+        <Label Content="Finish date" Grid.Row="8" Grid.Column="0"/>
+        <Label Content="Disabled" Grid.Row="9" Grid.Column="0"/>
         <TextBox x:Name="tbName" Grid.Row="0" Grid.Column="1" Margin="0,2,10,2"/>
         <TextBox x:Name="tbDescription" Grid.Row="1" Grid.Column="1" Margin="0,2,10,2"/>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
@@ -44,7 +50,10 @@
         </StackPanel>
         <ComboBox x:Name="cbSensors" Grid.Row="5" Grid.Column="1" Width="200" HorizontalAlignment="Left" Margin="0,2,0,2"/>
         <TextBox x:Name="tbValue" Grid.Row="6" Grid.Column="1" Width="200" HorizontalAlignment="Left" Margin="0,2,0,2"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,10" HorizontalAlignment="Center">
+        <DatePicker x:Name="dpStartDate" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="0,2,0,2"/>
+        <DatePicker x:Name="dpEndDate" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Margin="0,2,0,2"/>
+        <CheckBox x:Name="cbxDisabled" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" Margin="0,2,0,2" IsThreeState="False"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,10" HorizontalAlignment="Center">
             <Button x:Name="btnOk" Content="OK" Width="70" IsDefault="True" Margin="0,0,5,0" Click="btnOk_Click" />
             <Button x:Name="btnCancel" Content="Cancel" Width="70" IsCancel="True" Click="btnCancel_Click"/>
         </StackPanel>

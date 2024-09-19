@@ -35,13 +35,22 @@
                         <StackPanel Orientation="Horizontal" Margin="0,2,0,2" Grid.Row="0" Grid.Column="0">
                             <Button x:Name="btnAddDevice" Content="Add device" Margin="5,0,0,0" Click="btnAddDevice_Click"></Button>
                             <Button x:Name="btnDeleteDevice" Content="Delete device" Margin="5,0,0,0" Click="btnDeleteDevice_Click" />
-                            <Button x:Name="btnUpdateDevice" Content="Update device" Margin="5,0,0,0" Click="btnUpdateDevice_Click" />
+                            <Button x:Name="btnUpdateDevice" Content="Edit device" Margin="5,0,0,0" Click="btnUpdateDevice_Click" />
                         </StackPanel>
-                        <DataGrid x:Name="dgDevices" Height="173"  Grid.Column="0" Grid.Row="1" SelectionChanged="dgDevices_SelectionChanged"/>
+                        <DataGrid x:Name="dgDevices" Height="173"  Grid.Column="0" Grid.Row="1" SelectionChanged="dgDevices_SelectionChanged" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Device Id" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Device Name" Binding="{Binding Path=Name}"/>
+                                <DataGridTextColumn Header="Device description" Binding="{Binding Path=Description}"/>
+                                <DataGridTextColumn Header="Device LoRa address" Binding="{Binding Path=Address}"/>
+                                <DataGridTextColumn Header="Device Model" Binding="{Binding Path=Model.Name}"/>
+                            </DataGrid.Columns>
+                            
+                        </DataGrid>
                         <StackPanel Orientation="Horizontal" Margin="0,2,0,2" Grid.Row="2" Grid.Column="0">
                             <Button x:Name="btnAddSchedule" Content="Add schedule" Margin="5,0,0,0" Click="btnAddSchedule_Click"></Button>
                             <Button x:Name="btnDeleteSchedule" Content="Delete schedule" Margin="5,0,0,0" Click="btnDeleteSchedule_Click" />
-                            <Button x:Name="btnUpdateSchedule" Content="Update schedule" Margin="5,0,0,0" Click="btnUpdateSchedule_Click" />
+                            <Button x:Name="btnUpdateSchedule" Content="Edit schedule" Margin="5,0,0,0" Click="btnUpdateSchedule_Click" />
                         </StackPanel>
                         <DataGrid x:Name="dgSchedules" Grid.Row="3" Grid.Column="0"/>
                     </Grid>
@@ -58,7 +67,7 @@
                         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                             <Button x:Name="btnAddDeviceModel" Content="Add model" Margin="5,0,0,0" Click="btnAddDeviceModel_Click"></Button>
                             <Button x:Name="btnDeleteDeviceModel" Content="Delete model" Margin="5,0,0,0" Click="btnDeleteDeviceModel_Click" />
-                            <Button x:Name="btnUpdateDeviceModel" Content="Update model" Margin="5,0,0,0" Click="btnUpdateDeviceModel_Click" />
+                            <Button x:Name="btnUpdateDeviceModel" Content="Edit model" Margin="5,0,0,0" Click="btnUpdateDeviceModel_Click" />
                         </StackPanel>
                         <DataGrid x:Name="dgModels" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="NaN" VerticalAlignment="Stretch" Width="NaN" AutoGenerateColumns="True"/>
                     </Grid>

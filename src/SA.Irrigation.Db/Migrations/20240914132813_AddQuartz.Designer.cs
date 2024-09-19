@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SA.Irrigation.Db;
 
@@ -11,9 +12,11 @@ using SA.Irrigation.Db;
 namespace SA.Irrigation.Db.Migrations
 {
     [DbContext(typeof(IrrigationDbContext))]
-    partial class IrrigationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240914132813_AddQuartz")]
+    partial class AddQuartz
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -582,7 +585,7 @@ namespace SA.Irrigation.Db.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
-                    b.Property<Guid?>("ModelId")
+                    b.Property<Guid>("ModelId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -757,8 +760,10 @@ namespace SA.Irrigation.Db.Migrations
             modelBuilder.Entity("SA.Irrigation.Db.Entities.Device", b =>
                 {
                     b.HasOne("SA.Irrigation.Db.Entities.DeviceModel", "Model")
-                        .WithMany("Devices")
-                        .HasForeignKey("ModelId");
+                        .WithMany()
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Model");
                 });
@@ -799,11 +804,6 @@ namespace SA.Irrigation.Db.Migrations
             modelBuilder.Entity("SA.Irrigation.Db.Entities.Device", b =>
                 {
                     b.Navigation("Schedules");
-                });
-
-            modelBuilder.Entity("SA.Irrigation.Db.Entities.DeviceModel", b =>
-                {
-                    b.Navigation("Devices");
                 });
 #pragma warning restore 612, 618
         }

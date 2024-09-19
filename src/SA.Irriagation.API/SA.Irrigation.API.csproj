@@ -14,6 +14,7 @@
     </PackageReference>
     <PackageReference Include="Quartz" Version="3.13.0" />
     <PackageReference Include="Quartz.AspNetCore" Version="3.13.0" />
+    <PackageReference Include="Quartz.Serialization.SystemTextJson" Version="3.13.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
