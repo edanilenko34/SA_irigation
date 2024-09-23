@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <ctb:CrontabEditorControl Grid.Column="0" Grid.Row="0" x:Name="cronControl" CrontabString="{Binding ElementName=CronEditor, Path=CrontabString, Mode=TwoWay}" ShowCurrentCrontab="True" ShowCurrentCrontabDescription="True" ShowInfoOutsideMainScroller="True"/>
+        <ctb:CrontabEditorControl Grid.Column="0" Grid.Row="0" x:Name="cronControl" CrontabString="{Binding ElementName=CronEditor, Path=CrontabString, Mode=TwoWay}" ShowCurrentCrontab="True" ShowCurrentCrontabDescription="True" ShowInfoOutsideMainScroller="True" ShowMinutesMode="False" ShowSecondsMode="False" ShowHoursMode="False" ShowDayMode="False"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="btnOk" Content="OK" Width="70" IsDefault="True" Margin="0,0,5,0" Click="btnOk_Click" />
             <Button x:Name="btnCancel" Content="Cancel" Width="70" IsCancel="True" Click="btnCancel_Click"/>
